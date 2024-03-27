@@ -15,6 +15,9 @@ private:
 	void OnListKeyDown(wxKeyEvent& event);
 
 	void AddTaskFromInput();
+	void DeleteSelectedTasks();
+	void MoveSelectedTask(int offset);
+	void SwapTasks(int i, int j);
 
 	
 

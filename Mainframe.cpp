@@ -33,6 +33,7 @@ void MainFrame::BindEventsHandlers()
 {
 	addButton->Bind(wxEVT_BUTTON, &MainFrame::OnAddButtonClicked, this);
 	inputField->Bind(wxEVT_TEXT_ENTER, &MainFrame::OnInputEnter, this);
+	checkList->Bind(wxEVT_KEY_DOWN, &MainFrame::OnListKeyDown, this);
 }
 
 void MainFrame::OnAddButtonClicked(wxCommandEvent& event)
@@ -43,6 +44,16 @@ void MainFrame::OnAddButtonClicked(wxCommandEvent& event)
 void MainFrame::OnInputEnter(wxCommandEvent& event)
 {
 	AddTaskFromInput();
+}
+
+void MainFrame::OnListKeyDown(wxKeyEvent& event)
+{
+	switch (event.GetKeyCode())
+	{
+	case WXK_DELETE:
+		DeleteSelectedTasks();
+	break;
+	}
 }
 
 void MainFrame::AddTaskFromInput()
@@ -56,4 +67,20 @@ void MainFrame::AddTaskFromInput()
 	}
 
 	inputField->SetFocus();	
+} 
+
+void MainFrame::DeleteSelectedTasks()
+{
+	int selectedIndex = checkList->GetSelection();
+
+	if (selectedIndex == wxNOT_FOUND)
+	{
+		return;
+	}
+
+	checkList->Delete(selectedIndex);
+}
+
+void MainFrame::MoveSelectedTask(int offset)
+{
 }
