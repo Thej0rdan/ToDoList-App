@@ -6,7 +6,7 @@
 #include<algorithm>
 
 
-void saveTasksToFile(const std::vector<Task>& tasks, const std::string& filename)
+void SaveTasksToFile(const std::vector<Task>& tasks, const std::string& filename)
 {
 	std::ofstream ostream(filename);
 	ostream << tasks.size();

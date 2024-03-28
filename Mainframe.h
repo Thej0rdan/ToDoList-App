@@ -8,11 +8,14 @@ public:
 private:
 	void CreateControls();
 	void BindEventsHandlers();
+	void AddSavedTasks();
 
 
 	void OnAddButtonClicked(wxCommandEvent& event);
 	void OnInputEnter(wxCommandEvent& event);
 	void OnListKeyDown(wxKeyEvent& event);
+	void OnClearButtonClicked(wxCommandEvent& event);
+	void OnWindowClosed(wxCloseEvent& event);
 
 	void AddTaskFromInput();
 	void DeleteSelectedTasks();
